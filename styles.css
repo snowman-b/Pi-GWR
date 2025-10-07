@@ -1,0 +1,107 @@
+:root {
+  --bg: #0b1020;
+  --panel: #111833;
+  --text: #e8eefc;
+  --muted: #9aa7c7;
+  --accent: #5aa9ff;
+  --success: #1db954;
+  --error: #ff4d4f;
+  --warning: #ffb020;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 20% 0%, #141b3b, var(--bg));
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  max-width: 760px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: linear-gradient(180deg, #0e1430, #0d1229);
+  border: 1px solid #1c275a;
+  border-radius: 16px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.45);
+}
+
+.title { margin-top: 0; text-align: center; letter-spacing: 0.3px; }
+
+.display { display: grid; gap: 1rem; }
+.pi-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  background: var(--panel);
+  border: 1px solid #202a5c;
+  border-radius: 12px;
+}
+
+.pi-prefix {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.6rem;
+  color: var(--muted);
+}
+
+.pi-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.6rem;
+  outline: none;
+  caret-color: var(--accent);
+}
+.pi-input::placeholder { color: #6b7596; }
+
+.timer {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" on;
+  font-weight: 800;
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.status {
+  text-align: center;
+  min-height: 2rem;
+  font-weight: 700;
+}
+
+.controls { display: flex; justify-content: center; }
+.btn {
+  padding: 0.6rem 1rem;
+  background: #1a2656;
+  color: var(--text);
+  border: 1px solid #24357d;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover { background: #21306f; }
+
+.flash-success { animation: flashSuccess 0.8s ease-in-out 0s 2; }
+.flash-error { animation: flashError 0.6s ease-in-out 0s 3; }
+
+@keyframes flashSuccess {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(29,185,84,0); }
+  50% { box-shadow: 0 0 0 6px rgba(29,185,84,0.35); }
+}
+
+@keyframes flashError {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,77,79,0); }
+  50% { box-shadow: 0 0 0 6px rgba(255,77,79,0.4); }
+}
+
+.success-text { color: var(--success); }
+.error-text { color: var(--error); }
+
+.help { margin-top: 1rem; color: var(--muted); }
+.help code { color: var(--text); word-break: break-all; }

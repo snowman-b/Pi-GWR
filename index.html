@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pi 100 Stopwatch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" id="app">
+      <h1 class="title">Pi 100 Stopwatch</h1>
+
+      <div class="display">
+        <div class="pi-line" aria-label="Pi prefix and your input">
+          <span class="pi-prefix" aria-hidden="true">3.</span>
+          <input
+            id="piInput"
+            class="pi-input"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            maxlength="100"
+            placeholder="Type 100 digits…"
+            aria-label="Type the first 100 digits of pi after 3."
+          />
+        </div>
+
+        <div class="timer" id="timer" aria-live="polite" aria-atomic="true">00:00.00</div>
+
+        <div class="status" id="statusMessage" role="status" aria-live="assertive" aria-atomic="true"></div>
+
+        <div class="controls">
+          <button id="resetBtn" class="btn" type="button">Reset</button>
+        </div>
+      </div>
+
+      <details class="help">
+        <summary>What to do</summary>
+        <p>Type the first 100 decimal digits of π after <strong>3.</strong>. The timer starts on your first correct digit and stops at the 100th. One wrong digit ends the run.</p>
+        <p class="digits">Target digits:<br><code id="targetDigits"></code></p>
+      </details>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
