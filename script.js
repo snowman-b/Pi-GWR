@@ -1,5 +1,6 @@
-// Pi digits (first 100 after the decimal)
-const PI_100 = "141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067";
+// Pi digits (first 101 after the decimal)
+const PI_DIGITS = "1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
+const TARGET_LEN = PI_DIGITS.length;
 
 // Elements
 const input = document.getElementById('piInput');
@@ -10,7 +11,7 @@ const appEl = document.getElementById('app');
 const targetDigitsEl = document.getElementById('targetDigits');
 
 // Show the target digits in the help section
-if (targetDigitsEl) targetDigitsEl.textContent = PI_100;
+if (targetDigitsEl) targetDigitsEl.textContent = PI_DIGITS;
 
 // State
 let started = false;
@@ -74,9 +75,9 @@ function handleInput(e) {
     return;
   }
 
-  // Keep only digits, enforce max length 100, then format into 4 lines of 25
+  // Keep only digits, enforce max length, then format into lines of 25
   let raw = input.value.replace(/\D/g, '');
-  if (raw.length > 100) raw = raw.slice(0, 100);
+  if (raw.length > TARGET_LEN) raw = raw.slice(0, TARGET_LEN);
   const chunks = [];
   for (let i = 0; i < raw.length; i += 25) {
     chunks.push(raw.slice(i, i + 25));
@@ -99,7 +100,7 @@ function handleInput(e) {
   // Start timer on first correct digit
   const nextIndex = raw.length - 1; // index of the last typed char
   const lastChar = raw[nextIndex];
-  const expected = PI_100[nextIndex];
+  const expected = PI_DIGITS[nextIndex];
 
   // If it's the very first digit and correct, start timer
   if (!started && lastChar === expected && nextIndex === 0) {
@@ -108,7 +109,7 @@ function handleInput(e) {
 
   // Validate entire typed prefix matches (ignore newlines)
   for (let i = 0; i < raw.length; i++) {
-    if (raw[i] !== PI_100[i]) {
+    if (raw[i] !== PI_DIGITS[i]) {
       errored = true;
       stopTimer();
       statusEl.textContent = 'Try Again';
@@ -120,8 +121,8 @@ function handleInput(e) {
     }
   }
 
-  // Completion at 100 digits
-  if (raw.length === 100) {
+  // Completion at final digit
+  if (raw.length === TARGET_LEN) {
     done = true;
     stopTimer();
     statusEl.textContent = 'Well Done';

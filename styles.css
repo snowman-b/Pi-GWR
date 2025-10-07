@@ -70,7 +70,7 @@ body {
   white-space: pre;              /* no auto wrap; we insert newlines */
   box-sizing: border-box;
   padding-left: calc(2ch + 0.5rem); /* space for '3.' plus a gap */
-  height: calc(2.6rem * 4 + 8px);   /* 4 rows + small buffer */
+  height: calc(2.6rem * 5 + 8px);   /* 5 rows + small buffer */
 }
 .pi-input::placeholder { color: #6b7596; }
 
