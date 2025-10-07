@@ -81,6 +81,8 @@ function handleInput(e) {
   for (let i = 0; i < raw.length; i += 25) {
     chunks.push(raw.slice(i, i + 25));
   }
+  // The CSS left padding reserves space so digits align after '3.' on first row.
+  // For subsequent rows, no extra indent is needed; visual alignment is handled by padding.
   const formatted = chunks.join('\n');
   if (formatted !== input.value) {
     const pos = input.selectionStart || 0;

@@ -35,34 +35,42 @@ body {
 
 .display { display: grid; gap: 1rem; }
 .pi-line {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  position: relative;          /* allow prefix overlay */
+  display: block;
   padding: 0.8rem 1rem;
   background: var(--panel);
   border: 1px solid #bfdbfe; /* lighter blue border */
   border-radius: 12px;
+  width: 100%;               /* fill card width */
 }
 
 .pi-prefix {
+  position: absolute;
+  top: 0.8rem;                /* align with container padding top */
+  left: 1rem;                 /* align with container padding left */
+  pointer-events: none;       /* don't block typing */
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1.6rem;
+  font-size: 2.2rem;          /* bigger and matches input */
+  line-height: 2.6rem;
   color: var(--muted);
 }
 
 .pi-input {
-  flex: 1;
+  display: block;
+  width: 100%;                  /* fill the whole card */
   background: transparent;
   border: none;
   color: var(--text);
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
+  font-size: 2.2rem;            /* bigger font */
+  line-height: 2.6rem;          /* bigger row height */
   outline: none;
   caret-color: var(--accent);
   resize: none;
-  white-space: pre; /* no auto wrap; we insert newlines */
-  height: calc(1.6rem * 4 + 6px); /* 4 lines + small buffer */
+  white-space: pre;              /* no auto wrap; we insert newlines */
+  box-sizing: border-box;
+  padding-left: calc(2ch + 0.5rem); /* space for '3.' plus a gap */
+  height: calc(2.6rem * 4 + 8px);   /* 4 rows + small buffer */
 }
 .pi-input::placeholder { color: #6b7596; }
 
