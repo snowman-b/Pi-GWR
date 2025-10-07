@@ -16,20 +16,19 @@
       <div class="display">
         <div class="pi-line" aria-label="Pi prefix and your input">
           <span class="pi-prefix" aria-hidden="true">3.</span>
-          <input
+          <textarea
             id="piInput"
             class="pi-input"
-            type="text"
+            rows="4"
+            wrap="off"
             inputmode="numeric"
-            pattern="[0-9]*"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
             spellcheck="false"
-            maxlength="100"
             placeholder="Type 100 digits…"
-            aria-label="Type the first 100 digits of pi after 3."
-          />
+            aria-label="Type the first 100 digits of pi after 3. (Digits will be grouped 25 per line)"
+          ></textarea>
         </div>
 
         <div class="timer" id="timer" aria-live="polite" aria-atomic="true">00:00.00</div>

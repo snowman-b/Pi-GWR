@@ -74,19 +74,29 @@ function handleInput(e) {
     return;
   }
 
-  // Only keep digits, enforce max length 100
-  let v = input.value.replace(/\D/g, '');
-  if (v.length > 100) v = v.slice(0, 100);
-  input.value = v;
+  // Keep only digits, enforce max length 100, then format into 4 lines of 25
+  let raw = input.value.replace(/\D/g, '');
+  if (raw.length > 100) raw = raw.slice(0, 100);
+  const chunks = [];
+  for (let i = 0; i < raw.length; i += 25) {
+    chunks.push(raw.slice(i, i + 25));
+  }
+  const formatted = chunks.join('\n');
+  if (formatted !== input.value) {
+    const pos = input.selectionStart || 0;
+    input.value = formatted;
+    // Try to keep caret near the end; simpler approach: set to end
+    input.selectionStart = input.selectionEnd = input.value.length;
+  }
 
-  if (v.length === 0) {
+  if (raw.length === 0) {
     // Not started yet
     return;
   }
 
   // Start timer on first correct digit
-  const nextIndex = v.length - 1; // index of the last typed char
-  const lastChar = v[nextIndex];
+  const nextIndex = raw.length - 1; // index of the last typed char
+  const lastChar = raw[nextIndex];
   const expected = PI_100[nextIndex];
 
   // If it's the very first digit and correct, start timer
@@ -94,9 +104,9 @@ function handleInput(e) {
     startTimer();
   }
 
-  // Validate entire typed prefix matches
-  for (let i = 0; i < v.length; i++) {
-    if (v[i] !== PI_100[i]) {
+  // Validate entire typed prefix matches (ignore newlines)
+  for (let i = 0; i < raw.length; i++) {
+    if (raw[i] !== PI_100[i]) {
       errored = true;
       stopTimer();
       statusEl.textContent = 'Try Again';
@@ -109,7 +119,7 @@ function handleInput(e) {
   }
 
   // Completion at 100 digits
-  if (v.length === 100) {
+  if (raw.length === 100) {
     done = true;
     stopTimer();
     statusEl.textContent = 'Well Done';

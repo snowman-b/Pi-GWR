@@ -1,9 +1,10 @@
 :root {
-  --bg: #0b1020;
-  --panel: #111833;
-  --text: #e8eefc;
-  --muted: #9aa7c7;
-  --accent: #5aa9ff;
+  /* Light theme */
+  --bg: #ffffff;            /* page background (surrounding) */
+  --panel: #ffffff;         /* inner panels */
+  --text: #0b1020;          /* main text */
+  --muted: #475569;         /* subdued text */
+  --accent: #2563eb;        /* blue accents */
   --success: #1db954;
   --error: #ff4d4f;
   --warning: #ffb020;
@@ -13,7 +14,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  background: radial-gradient(1200px 600px at 20% 0%, #141b3b, var(--bg));
+  background: var(--bg);
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   -webkit-font-smoothing: antialiased;
@@ -24,10 +25,10 @@ body {
   max-width: 760px;
   margin: 4rem auto;
   padding: 2rem;
-  background: linear-gradient(180deg, #0e1430, #0d1229);
-  border: 1px solid #1c275a;
+  background: #dbeafe; /* light blue stopwatch area */
+  border: 1px solid #93c5fd;
   border-radius: 16px;
-  box-shadow: 0 10px 50px rgba(0,0,0,0.45);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .title { margin-top: 0; text-align: center; letter-spacing: 0.3px; }
@@ -39,7 +40,7 @@ body {
   gap: 0.6rem;
   padding: 0.8rem 1rem;
   background: var(--panel);
-  border: 1px solid #202a5c;
+  border: 1px solid #bfdbfe; /* lighter blue border */
   border-radius: 12px;
 }
 
@@ -55,9 +56,13 @@ body {
   border: none;
   color: var(--text);
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   outline: none;
   caret-color: var(--accent);
+  resize: none;
+  white-space: pre; /* no auto wrap; we insert newlines */
+  height: calc(1.6rem * 4 + 6px); /* 4 lines + small buffer */
 }
 .pi-input::placeholder { color: #6b7596; }
 
@@ -80,7 +85,7 @@ body {
 .btn {
   padding: 0.6rem 1rem;
   background: #1a2656;
-  color: var(--text);
+  color: #ffffff; /* ensure reset text is white */
   border: 1px solid #24357d;
   border-radius: 10px;
   cursor: pointer;
