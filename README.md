@@ -7,7 +7,7 @@ A tiny web app: type the first 100 digits of π after `3.` and see how fast you 
 - Timer starts at your first correct digit and updates in hundredths
 - Stops on first mistake and flashes red with "Try Again"
 - Stops on the 100th digit and flashes green with "Well Done"
-- Reset button and `R` keyboard shortcut
+- Reset butto
 
 ## Run locally
 Any static server works. On macOS you can use Python's http.server:
